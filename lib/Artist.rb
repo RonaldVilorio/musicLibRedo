@@ -2,11 +2,15 @@ class Artist
 
   @@all = []
 
-  attr_accessor :name
+  attr_accessor :name,:song
 
   def initialize(name)
     @name = name
     @songs = []
+  end
+  def add_song(song)
+    song.artist = self if song.artist == nil
+    @songs << song if !@songs.include?(song)
   end
 
   def songs
