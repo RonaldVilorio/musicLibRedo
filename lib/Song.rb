@@ -28,6 +28,19 @@ class Song
   def self.find_or_create_by_name(name)
     self.find_by_name(name) || self.create(name)
   end
+  def self.new_from_filename(file)
+    file = file.split(/\s*-\s*/)
+    song_name = file[1]
+    artist_name = file[0]
+    genre_name = file[2].split(".")[0]
+
+    artist = Artist.find_or_create_by_name(artist_name)
+    genre = Genre.find_or_create_by_name(genre_name)
+
+    song = self.new(song_name,artist,genre)
+    song
+
+  end
 
 
   def self.all
