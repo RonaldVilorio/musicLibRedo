@@ -8,6 +8,11 @@ class Artist
     @name = name
     @songs = []
   end
+  def genres
+   self.songs.collect{|song|
+      song.genre
+    }.uniq
+  end
   def add_song(song)
     song.artist = self if song.artist == nil
     @songs << song if !@songs.include?(song)
