@@ -21,4 +21,9 @@ class MusicLibraryController
     end
   end
 
+  def list_songs
+    # binding.pry
+    Song.all.collect{|song|"#{song.artist.name} - #{song.name} - #{song.genre.name}" }
+  end
+
 end
